@@ -53,7 +53,7 @@ public class TransactionService {
     public boolean authorizeTransaction(User sender, BigDecimal value) throws Exception {
         ResponseEntity<Map> authorizationResponse =
                 restTemplate.getForEntity(
-                        "https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf3d0aef",
+                        "https://util.devi.tools/api/v2/authorize",
                         Map.class
                 );
 
