@@ -1,19 +1,13 @@
-package com.bancosimplificado.bancosimplificado.domain.Service;
+package com.bancosimplificado.bancosimplificado.Service;
 
-import com.bancosimplificado.bancosimplificado.domain.Dto.TransactionDto;
-import com.bancosimplificado.bancosimplificado.domain.Service.UserService;
+import com.bancosimplificado.bancosimplificado.Dto.TransactionDto;
 import com.bancosimplificado.bancosimplificado.domain.Transaction.Transaction;
-import com.bancosimplificado.bancosimplificado.domain.repositories.TransactionRepository;
+import com.bancosimplificado.bancosimplificado.repositories.TransactionRepository;
 import com.bancosimplificado.bancosimplificado.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Service
 public class TransactionService {

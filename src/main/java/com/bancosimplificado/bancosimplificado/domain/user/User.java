@@ -1,6 +1,6 @@
 package com.bancosimplificado.bancosimplificado.domain.user;
 
-import com.bancosimplificado.bancosimplificado.domain.Dto.UserDto;
+import com.bancosimplificado.bancosimplificado.Dto.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
 

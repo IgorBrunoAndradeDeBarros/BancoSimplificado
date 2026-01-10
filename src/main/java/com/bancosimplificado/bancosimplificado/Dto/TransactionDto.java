@@ -1,4 +1,4 @@
-package com.bancosimplificado.bancosimplificado.domain.Dto;
+package com.bancosimplificado.bancosimplificado.Dto;
 
 import java.math.BigDecimal;
 

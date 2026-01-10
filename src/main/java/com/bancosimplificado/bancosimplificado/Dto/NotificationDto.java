@@ -1,4 +1,4 @@
-package com.bancosimplificado.bancosimplificado.domain.Dto;
+package com.bancosimplificado.bancosimplificado.Dto;
 
 public record NotificationDto(String email, String message) {
 }

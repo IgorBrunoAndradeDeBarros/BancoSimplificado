@@ -1,6 +1,6 @@
 package com.bancosimplificado.bancosimplificado.infra;
 
-import com.bancosimplificado.bancosimplificado.domain.Dto.ExceptionDto;
+import com.bancosimplificado.bancosimplificado.Dto.ExceptionDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;

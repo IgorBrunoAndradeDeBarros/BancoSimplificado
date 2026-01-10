@@ -1,4 +1,4 @@
-package com.bancosimplificado.bancosimplificado.domain.repositories;
+package com.bancosimplificado.bancosimplificado.repositories;
 
 import com.bancosimplificado.bancosimplificado.domain.Transaction.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;

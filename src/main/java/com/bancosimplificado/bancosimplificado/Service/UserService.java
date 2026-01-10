@@ -1,7 +1,7 @@
-package com.bancosimplificado.bancosimplificado.domain.Service;
+package com.bancosimplificado.bancosimplificado.Service;
 
-import com.bancosimplificado.bancosimplificado.domain.Dto.UserDto;
-import com.bancosimplificado.bancosimplificado.domain.repositories.UserRepository;
+import com.bancosimplificado.bancosimplificado.Dto.UserDto;
+import com.bancosimplificado.bancosimplificado.repositories.UserRepository;
 import com.bancosimplificado.bancosimplificado.domain.user.User;
 import com.bancosimplificado.bancosimplificado.domain.user.UserType;
 import org.springframework.beans.factory.annotation.Autowired;

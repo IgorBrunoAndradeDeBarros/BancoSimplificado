@@ -1,4 +1,4 @@
-package com.bancosimplificado.bancosimplificado.domain.Service;
+package com.bancosimplificado.bancosimplificado.Service;
 
 import com.bancosimplificado.bancosimplificado.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;

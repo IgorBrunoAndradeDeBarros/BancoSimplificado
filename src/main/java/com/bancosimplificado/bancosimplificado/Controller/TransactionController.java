@@ -1,7 +1,7 @@
-package com.bancosimplificado.bancosimplificado.domain.Controller;
+package com.bancosimplificado.bancosimplificado.Controller;
 
-import com.bancosimplificado.bancosimplificado.domain.Dto.TransactionDto;
-import com.bancosimplificado.bancosimplificado.domain.Service.TransactionService;
+import com.bancosimplificado.bancosimplificado.Dto.TransactionDto;
+import com.bancosimplificado.bancosimplificado.Service.TransactionService;
 import com.bancosimplificado.bancosimplificado.domain.Transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
