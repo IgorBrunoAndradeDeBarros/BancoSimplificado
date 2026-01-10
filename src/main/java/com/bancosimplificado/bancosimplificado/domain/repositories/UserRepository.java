@@ -1,0 +1,11 @@
+package com.bancosimplificado.bancosimplificado.domain.repositories;
+
+import com.bancosimplificado.bancosimplificado.domain.user.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findUserByDocument(String document);
+    Optional<User> findUserByid(long id);
+}
