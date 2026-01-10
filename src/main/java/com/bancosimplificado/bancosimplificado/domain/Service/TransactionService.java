@@ -17,51 +17,45 @@ import java.util.Map;
 
 @Service
 public class TransactionService {
-
-    @Autowired
-    private TransactionRepository transactionRepository;
     @Autowired
     private UserService userService;
+
     @Autowired
-    private RestTemplate restTemplate;
+    private TransactionRepository repository;
 
-    public void createTransection(TransactionDto transection) throws Exception {
-        User sender = this.userService.findUserById(transection.senderId());
-        User receiver = this.userService.findUserById(transection.receiverId());
+    @Autowired
+    private AuthorizationService authService;
 
-        userService.validateTransaction(sender, transection.value());
+    @Autowired
+    private NotificationService notificationService;
 
-        boolean isAuthorized = authorizeTransaction(sender, transection.value());
-        if (!isAuthorized) {
-            throw new Exception("transação não autorizada");
+    public Transaction createTransaction(TransactionDto transaction) throws Exception {
+        User sender = this.userService.findUserById(transaction.senderId());
+        User receiver = this.userService.findUserById(transaction.receiverId());
+
+        userService.validateTransaction(sender, transaction.value());
+
+        boolean isAuthorized = this.authService.authorizeTransaction(sender, transaction.value());
+        if(!isAuthorized){
+            throw new Exception("Transação não autorizada");
         }
 
-        Transaction newtransaction = new Transaction();
-        newtransaction.setSender(sender);
-        newtransaction.setReceiver(receiver);
-        newtransaction.setAmount(transection.value());
-        newtransaction.setTimestamp(LocalDateTime.now());
+        Transaction newTransaction = new Transaction();
+        newTransaction.setAmount(transaction.value());
+        newTransaction.setSender(sender);
+        newTransaction.setReceiver(receiver);
+        newTransaction.setTimestamp(LocalDateTime.now());
 
-        sender.setBalance(sender.getBalance().subtract(transection.value()));
-        receiver.setBalance(receiver.getBalance().add(transection.value()));
+        sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
 
-        this.transactionRepository.save(newtransaction);
-        userService.saveUser(sender);
-        userService.saveUser(receiver);
-    }
+        this.repository.save(newTransaction);
+        this.userService.saveUser(sender);
+        this.userService.saveUser(receiver);
 
-    public boolean authorizeTransaction(User sender, BigDecimal value) throws Exception {
-        ResponseEntity<Map> authorizationResponse =
-                restTemplate.getForEntity(
-                        "https://util.devi.tools/api/v2/authorize",
-                        Map.class
-                );
+        this.notificationService.sendNotification(sender, "Transação realizada com sucesso");
+        this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");
 
-        if (authorizationResponse.getStatusCode() == HttpStatus.OK) {
-            String message = (String) authorizationResponse.getBody().get("message");
-            return "Autorizado".equalsIgnoreCase(message);
-        } else {
-            return false;
-        }
+        return newTransaction;
     }
 }
