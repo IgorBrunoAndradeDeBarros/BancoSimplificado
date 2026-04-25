@@ -12,7 +12,7 @@ This project is an API built using **Java, Java Spring, H2 as the database, JUni
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/dilluter/BancoSimplificado.git
+git clone https://github.com/IgorBrunoAndradeDeBarros/BancoSimplificado.git
 ```
 
 2. Install dependencies with Maven
